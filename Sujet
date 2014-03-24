@@ -1,0 +1,106 @@
+ESIEA 2013/2014 4A
+Conception et Architecture Orientées Objet
+Sujet du projet
+Conception et architecture d'une plate-forme web
+de gestion d'enchères type «eBay »
+Date rendu des projets : Lundi 24 mars 2014
+
+1 Introduction
+L'objectif de ce projet et de mettre en oeuvre les concepts théoriques présentés dans le
+cours « Conception et Architecture orientées Objet » sur une étude de cas pratique.
+Sujet proposé pour l'étude de cas : Plate-forme web de gestion d'enchères de type
+«eBay ».
+Le sujet proposé comporte deux parties :
+
+- Un document d'architecture
+- Un projet en langage JAVA
+Chaque partie donnera lieu à un livrable.
+Description des livrables attendus
+Le document d'architecture
+Ce document doit présenter l'architecture et l'infrastructure du système d'enchères web
+dans une configuration de production.
+Pour l'infrastructure, vous devez décrire l'ensemble des serveurs nécessaires au
+déploiement de la solution (serveur base de sonnées, etc...).
+Le document présentera également les diagrammes de classes au format UML du modèle
+objet proposé pour répondre aux spécifications du prototype.
+Le format du document d'architecture devra être compatible Microsoft Powerpoint
+(extension .ppt).
+Il devra être livré dans un projet sur la plateforme (gratuite) github (projet en commun des
+3 membres du groupe) : https://github.com/.
+
+Le prototype JAVA
+
+Concevoir et développer dans une approche TDD (Test Driven Development) un prototype
+en langage JAVA conforme aux spécifications demandées (cf paragraphe spécifications).
+Les sources JAVA doivent être mis à disposition dans un projet sur la plateforme (gratuite)
+github (projet en commun des 3 membres du groupe) : https://github.com/.
+Le projet github doit également contenir une documentation d'installation et d'exécution du
+prototype.
+Le projet JAVA doit fournir des classes de tests unitaires (type Junit version 4). Ces
+classes de tests doivent permettre d'évaluer et de couvrir toutes les règles de gestion
+spécifiées.
+Pour réaliser ce prototype, il est demandé de n'utiliser que les librairies standards JAVA du
+JDK (aucune dépendances vers une librairie tiers n'est requise).
+2
+Le prototype JAVA doit modéliser les objets et les règles de gestion du système
+d'enchères. Il n'est pas demandé de développer une interface graphique. Il n'est pas
+non plus demandé de fournir le code permettant de persister les données dans une
+base de données. Les objets instanciés restent en mémoire.
+Spécifications du prototype :
+Les utilisateurs du système :
+Le système doit permettre tout d'abord de créer des instances des utilisateurs du système
+d'enchères. Un utilisateur du système est identifié par son login. Il possède un nom et un
+prénom. Un utilisateur du système peut avoir plusieurs rôles. Il peut être Acheteur et/ou
+Vendeur.
+Un utilisateur dans son rôle de Vendeur peut créer une enchère et publier cette enchère.
+Une enchère publiée devient visible pour les autres utilisateurs du système.
+Un utilisateur dans son rôle d'Acheteur peut émettre des offres pour une enchère publiée
+par un autre utilisateur que lui. Il n'est pas possible d'émettre une offre pour une enchère
+non publiée.
+Les enchères
+Une enchère repose sur la vente d'un objet. Un objet est caractérisé par son identifiant et
+une description.
+Une enchère est caractérisée par une date limite, au delà de laquelle l'enchère se termine.
+Il est possible d'émettre des offres sur une enchère dès que celle ci est publiée.
+Une offre est caractérisée par son émetteur (l'utilisateur acheteur) et un prix.
+Le vendeur a la possibilité de préciser un prix minimum pour son enchère. Il n'est pas
+possible d'émettre une offre en dessous du prix minimum. Le prix minimum d'une enchère
+est visible pour tous les utilisateurs du système.
+Le vendeur a également la possibilité de préciser un prix de « réserve » pour son enchère.
+Le prix de réserve n'est visible que par le vendeur. Un acheteur a par contre la possibilité
+de savoir si le prix de réserve a été atteint par son offre ou par celle d'un autre acheteur.
+Le vendeur à la possibilité d'annuler une enchère, si et seulement si, aucune offre sur
+cette enchère n'a atteint le prix de réserve de l'enchère.
+Un vendeur ne peut pas émettre une offre sur une de ses enchères.
+Voici les différents états possibles d'une enchère :
+• Etat créée : l'enchère n'est visible que par le vendeur.
+• Etat publiée : l'enchère est visible par tous les utilisateurs du système
+• Etat annulée : l'enchère est annulée par le vendeur Cette enchère reste visible
+dans le système par le vendeur et tous les acheteurs ayant émis au moins une offre
+pour cette enchère.
+3
+•
+Etat terminée : la date limite de l'enchère a été atteinte. L'offre la plus haute est
+celle qui remporte l'enchère.
+Les alertes sur enchère :
+Le système doit proposer un mécanisme d'alertes sur les enchères.
+Une alerte automatique est ajoutée sur une enchère pour prévenir le vendeur dès qu'une
+offre est faite sur son enchère.
+Il est de plus possible pour chaque acheteur de configurer des alertes sur une enchère
+pour être prévenu des événements suivants :
+•
+•
+•
+Le prix de réserve a été atteint par une offre
+L'enchère a été annulée par le vendeur.
+Une offre supérieure à celle émise par l'acheteur a été émise par un autre acheteur.
+Un acheteur doit pouvoir désactiver tout ou partie de ses alertes.
+Règles d'évaluation du projet :
+Pour la partie document d'architecture, la clarté du document sera prise en compte ainsi
+que le qualité des schémas et des diagrammes de classes. Aucun outil de modélisation
+n'est imposé.
+Pour la partie prototype, la qualité du code sera jugé sur le respect des principes
+fondamentaux du Design Objet, notamment le principe SRP (Single Responsibilty
+Principle).
+Les tests unitaires doivent mettre en évidence toutes les spécifications décrites.
+4
